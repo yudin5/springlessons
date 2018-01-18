@@ -1,5 +1,6 @@
 package lessons.starter;
 
+import lessons.services.BeanWithDependency;
 import lessons.services.GreetingService;
 import lessons.LessonsConfiguration;
 import org.apache.log4j.LogManager;
@@ -21,7 +22,9 @@ public class Starter {
                 new AnnotationConfigApplicationContext(LessonsConfiguration.class);
         GreetingService greetingService = context.getBean(GreetingService.class);
 //      GreetingService greetingService = (GreetingService) context.getBean("first");
+        BeanWithDependency withDependency = context.getBean(BeanWithDependency.class);
         logger.info(greetingService.sayGreeting()); // "Greeting, user!"
+        logger.info(withDependency.toString());
         context.registerShutdownHook();
     }
 }

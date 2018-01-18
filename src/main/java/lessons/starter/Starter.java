@@ -24,7 +24,7 @@ public class Starter {
 //      GreetingService greetingService = (GreetingService) context.getBean("first");
         BeanWithDependency withDependency = context.getBean(BeanWithDependency.class);
         logger.info(greetingService.sayGreeting()); // "Greeting, user!"
-        logger.info(withDependency.toString());
+        logger.info(withDependency.printServiceName());
         context.registerShutdownHook();
     }
 }

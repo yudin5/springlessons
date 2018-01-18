@@ -14,10 +14,10 @@ import org.springframework.context.annotation.*;
 @Import(AnotherConfiguration.class)
 public class LessonsConfiguration {
     //@Bean(name = "first")
-    @Description("This is our first bean")
-    GreetingService greetingService() {
-        return new GreetingServiceImpl();
-    }
+//    @Description("This is our first bean")
+//    GreetingService greetingService() {
+//        return new GreetingServiceImpl();
+//    }
 
     @Bean
     @Scope("prototype")
@@ -35,9 +35,4 @@ public class LessonsConfiguration {
             }
         };
     }
-
-//    @Bean
-//    BeanWithDependency beanWithDependency() {
-//        return new BeanWithDependency(greetingService());
-//    }
 }

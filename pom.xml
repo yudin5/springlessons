@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>spring-projects.guides</groupId>
+    <artifactId>spring-lessons</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java-version>1.8</java-version>
+        <sl4j-version>1.5.8</sl4j-version>
+    </properties>
+
+    <dependencies>
+
+        <!--****** Spring зависимости ******-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--*********************************-->
+
+        <!--********* Логгирование *******-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.14</version>
+        </dependency>
+        <!--******************************-->
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${sl4j-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${sl4j-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${sl4j-version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>io.spring.repo.maven.release</id>
+            <url>http://repo.spring.io/release/</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!--****** Устанавливаем единую версию для всех Spring  зависимостей *******-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>4.1.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--************************************************************************-->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.2</version>
+                    <configuration>
+                        <source>${java-version}</source>
+                        <target>${java-version}</target>
+                        <encoding>${file.encoding}</encoding>
+                        <compilerArgument>-Xlint:all</compilerArgument>
+                        <showWarnings>true</showWarnings>
+                        <showDeprecation>true</showDeprecation>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+<!--<dependencies>-->
+
+    <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-core &ndash;&gt;-->
+    <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-core</artifactId>-->
+        <!--<version>5.0.2.RELEASE</version>-->
+    <!--</dependency>-->
+
+    <!--&lt;!&ndash;****** Spring зависимости ******&ndash;&gt;-->
+    <!--&lt;!&ndash;****** Исключаем зависимости логгирования из spring-core модуля??? ******&ndash;&gt;-->
+    <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-context</artifactId>-->
+        <!--<exclusions>-->
+            <!--<exclusion>-->
+                <!--<groupId>commons-logging</groupId>-->
+                <!--<artifactId>commons-logging</artifactId>-->
+            <!--</exclusion>-->
+        <!--</exclusions>-->
+    <!--</dependency>-->
+    <!--&lt;!&ndash;*********************************&ndash;&gt;-->
+
+    <!--&lt;!&ndash;********* Логгирование *******&ndash;&gt;-->
+    <!--<dependency>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
+        <!--<version>1.2.14</version>-->
+    <!--</dependency>-->
+    <!--&lt;!&ndash;******************************&ndash;&gt;-->
+
+    <!--&lt;!&ndash;****** Для использования SLF4 (инструмент логгирования) *********&ndash;&gt;-->
+    <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-api</artifactId>-->
+        <!--<version>1.5.8</version>-->
+    <!--</dependency>-->
+
+    <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--<version>1.5.8</version>-->
+    <!--</dependency>-->
+
+    <!--&lt;!&ndash;****** Logback зависимости ******&ndash;&gt;-->
+    <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>jcl-over-slf4j</artifactId>-->
+        <!--<version>1.5.8</version>-->
+    <!--</dependency>-->
+
+    <!--<dependency>-->
+        <!--<groupId>ch.qos.logback</groupId>-->
+        <!--<artifactId>logback-classic</artifactId>-->
+        <!--<version>1.1.2</version>-->
+    <!--</dependency>-->
+    <!--&lt;!&ndash;******************************&ndash;&gt;-->
+
+<!--</dependencies>-->
+
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>io.spring.repo.maven.release</id>-->
+            <!--<url>http://repo.spring.io/release/</url>-->
+            <!--<snapshots><enabled>true</enabled></snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+
+</project>
